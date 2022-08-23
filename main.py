@@ -1,4 +1,5 @@
-
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait
 from time import sleep
