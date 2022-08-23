@@ -50,7 +50,7 @@ def sendd(_,msg):
             print(typ.type)
             tipi = str(typ.type)
             # print(typ.offset)
-            if tipi == "MessageEntityType.TEXT_LINK":
+            if tipi == "text_link":
                 print('yes')
                 ofseti = typ.offset
                 endset = ofseti + typ.length
