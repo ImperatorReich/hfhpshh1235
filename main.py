@@ -41,7 +41,7 @@ def sendd(_,msg):
     print(msg)
     print(msg.entities)
     # if msg.caption_entities or msg.entities == None:
-    #     app.copy_message('me', msg.chat.id, msg.id)
+    #     app.copy_message('me', msg.chat.id, msg.message_id)
     # else:
     ofseti = 0
     try:
@@ -55,13 +55,13 @@ def sendd(_,msg):
                 print(ofseti)
 
         if msg.media_group_id != None:
-            arsen = app.copy_media_group(outchat, msg.chat.id, msg.id)
+            arsen = app.copy_media_group(outchat, msg.chat.id, msg.message_id)
             # print(arsen)
             for cpt in arsen:
                 if cpt.caption != None:
                     cpt.edit(msg.caption[:ofseti] + '\n' + bindlink)
         else:
-            arsen = app.copy_message(outchat, msg.chat.id, msg.id)
+            arsen = app.copy_message(outchat, msg.chat.id, msg.message_id)
             try:
                 arsen.edit(msg.text[:ofseti] + '\n' + bindlink)
             except:
