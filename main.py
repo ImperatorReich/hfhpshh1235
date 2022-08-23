@@ -62,14 +62,14 @@ def sendd(_,msg):
             # print(arsen)
             for cpt in arsen:
                 if cpt.caption != None:
-                    cpt.edit(msg.caption[ofseti:endset] + '\n' + bindlink)
+                    cpt.edit(msg.caption[:ofseti] + '\n' + bindlink)
         else:
             arsen = app.copy_message(outchat, msg.chat.id, msg.message_id)
             try:
-                arsen.edit(msg.text[ofseti:endset] + '\n' + bindlink)
+                arsen.edit(msg.text[:ofseti] + '\n' + bindlink)
             except:
                 try:
-                    arsen.edit(msg.caption[ofseti:endset] + '\n' + bindlink)
+                    arsen.edit(msg.caption[:ofseti] + '\n' + bindlink)
                 except Exception as e:
                     print(e)
                 # msg.text[:ofseti] or
