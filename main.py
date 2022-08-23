@@ -67,8 +67,9 @@ def sendd(_,msg):
             except:
                 arsen.edit(msg.caption[:ofseti] + '\n' + bindlink)
                 # msg.text[:ofseti] or
-    except:
+    except Error as e:
         print('TRURNED')
+        print(e)
         #app.copy_message('me', msg.chat.id, msg.id)
 
 
