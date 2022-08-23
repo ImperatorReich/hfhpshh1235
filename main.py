@@ -44,6 +44,7 @@ def sendd(_,msg):
     #     app.copy_message('me', msg.chat.id, msg.message_id)
     # else:
     ofseti = 0
+    endset = 0
     try:
         for typ in msg.caption_entities or msg.entities:
             print(typ.type)
@@ -52,21 +53,23 @@ def sendd(_,msg):
             if tipi == "MessageEntityType.TEXT_LINK":
                 print('yes')
                 ofseti = typ.offset
+                endset = ofseti + typ.length
                 print(ofseti)
+                print(endset)
 
         if msg.media_group_id != None:
             arsen = app.copy_media_group(outchat, msg.chat.id, msg.message_id)
             # print(arsen)
             for cpt in arsen:
                 if cpt.caption != None:
-                    cpt.edit(msg.caption[:ofseti] + '\n' + bindlink)
+                    cpt.edit(msg.caption[ofseti:endset] + '\n' + bindlink)
         else:
             arsen = app.copy_message(outchat, msg.chat.id, msg.message_id)
             try:
-                arsen.edit(msg.text[:ofseti] + '\n' + bindlink)
+                arsen.edit(msg.text[ofseti:endset] + '\n' + bindlink)
             except:
                 try:
-                    arsen.edit(msg.caption[:ofseti] + '\n' + bindlink)
+                    arsen.edit(msg.caption[ofseti:endset] + '\n' + bindlink)
                 except Exception as e:
                     print(e)
                 # msg.text[:ofseti] or
